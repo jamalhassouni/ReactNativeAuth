@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
+import firebase from "../firebase";
 import { Card, CardItem, Button, Input } from "./common";
 
 class LoginForm extends Component {
@@ -7,13 +8,28 @@ class LoginForm extends Component {
     super(props);
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      error: ""
     };
   }
 
   onLoginPressed = () => {
-    console.log(`Username is: ${this.state.email}`);
-    console.log(`password is: ${this.state.password}`);
+    const { email, password } = this.state;
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .catch(() => {
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword(email, password)
+          .catch(this.onAuthFailed);
+      });
+  };
+
+  onAuthFailed = () => {
+    this.setState({
+      error: "Authentication Failed"
+    });
   };
   render() {
     return (
@@ -34,6 +50,7 @@ class LoginForm extends Component {
             onChangeText={password => this.setState({ password })}
           />
         </CardItem>
+        <Text style={styles.errorMessage}>{this.state.error}</Text>
         <CardItem>
           <Button onPress={this.onLoginPressed}>Login</Button>
         </CardItem>
@@ -42,7 +59,12 @@ class LoginForm extends Component {
   }
 }
 const styles = StyleSheet.create({
-  container: {}
+  errorMessage: {
+    fontSize: 16,
+    alignSelf: "center",
+    color: "#ff0000",
+    marginTop: 5
+  }
 });
 
 export default LoginForm;
