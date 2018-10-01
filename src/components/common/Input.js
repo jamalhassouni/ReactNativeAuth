@@ -1,0 +1,35 @@
+import React from "react";
+import { Text, TextInput, View, StyleSheet } from "react-native";
+
+const Input = ( props ) => (
+  <View style={styles.container}>
+    <Text style={styles.label}>{props.label}</Text>
+    <TextInput
+      placeholder={props.placeholder}
+      secureTextEntry={props.secureTextEntry}
+      autoCorrect={false}
+      autoCapitalize='none'
+      style={styles.input}
+    />
+  </View>
+);
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    height: 60
+  },
+  label: {
+    flex: 1,
+    color: "#707070",
+    paddingLeft: 10,
+    fontSize: 16
+  },
+  input: {
+    flex: 1,
+    paddingLeft: 10,
+    fontSize: 16,
+    color: "#000"
+  }
+});
+export { Input };
