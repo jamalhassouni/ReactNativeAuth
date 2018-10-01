@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { Card, CardItem, Button } from "./common";
+import { Card, CardItem, Button, Input } from "./common";
 
 class LoginForm extends Component {
   constructor(props) {
@@ -11,8 +11,20 @@ class LoginForm extends Component {
   render() {
     return (
       <Card>
-        <CardItem />
-        <CardItem />
+        <CardItem>
+          <Input
+            label="Email"
+            placeholder="Enter your email"
+            secureTextEntry={false}
+          />
+        </CardItem>
+        <CardItem>
+          <Input
+            label="Password"
+            placeholder="Enter your password"
+            secureTextEntry={true}
+          />
+        </CardItem>
         <CardItem>
           <Button>Login</Button>
         </CardItem>
