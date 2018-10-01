@@ -12,8 +12,8 @@ class LoginForm extends Component {
   }
 
   onLoginPressed = () => {
-console.log(`Username is: ${this.state.email}`);
-console.log(`password is: ${this.state.password}`);
+    console.log(`Username is: ${this.state.email}`);
+    console.log(`password is: ${this.state.password}`);
   };
   render() {
     return (
