@@ -5,9 +5,16 @@ import { Card, CardItem, Button, Input } from "./common";
 class LoginForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      email: "",
+      password: ""
+    };
   }
 
+  onLoginPressed = () => {
+console.log(`Username is: ${this.state.email}`);
+console.log(`password is: ${this.state.password}`);
+  };
   render() {
     return (
       <Card>
@@ -16,6 +23,7 @@ class LoginForm extends Component {
             label="Email"
             placeholder="Enter your email"
             secureTextEntry={false}
+            onChangeText={email => this.setState({ email })}
           />
         </CardItem>
         <CardItem>
@@ -23,10 +31,11 @@ class LoginForm extends Component {
             label="Password"
             placeholder="Enter your password"
             secureTextEntry={true}
+            onChangeText={password => this.setState({ password })}
           />
         </CardItem>
         <CardItem>
-          <Button>Login</Button>
+          <Button onPress={this.onLoginPressed}>Login</Button>
         </CardItem>
       </Card>
     );
