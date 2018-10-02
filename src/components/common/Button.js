@@ -14,11 +14,11 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 5,
     justifyContent: "center",
-    backgroundColor: "#2a3744",
+    backgroundColor: "#34495e",
     marginVertical: 20
   },
   textStyle: {
-    color: "#82b541",
+    color: "#ecf0f1",
     textAlign: "center",
     fontSize: 15,
     fontWeight: "bold"
