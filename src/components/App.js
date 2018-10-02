@@ -31,6 +31,8 @@ class App extends Component {
       case true:
         return (
           <View style={styles.logoutContainer}>
+            <Text style={styles.welcome}>Welcome  to Auth app</Text>
+
             <Button onPress={() => firebase.auth().signOut()}>Log Out</Button>
           </View>
         );
@@ -58,6 +60,12 @@ const styles = StyleSheet.create({
   logoutContainer: {
     height: 80,
     margin: 10
+  },
+  welcome:{
+    color: "#16a085",
+    fontSize: 17,
+    fontWeight: "bold",
+    alignSelf: 'center',
   }
 });
 
